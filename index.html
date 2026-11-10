@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leave Records</title>
+<style>
+:root{--bg:#eef3f5;--sf:#fff;--ink:#12232e;--mu:#5d6f7b;--ln:#dbe4e9;--pr:#0f766e;--sick:#e0533d;--cas:#4f6bed;--ear:#0f9d8a;--late:#d98a0b;--early:#8b5cf6;--bad:#c62f2f}
+@media(prefers-color-scheme:dark){:root{--bg:#0e171d;--sf:#16232c;--ink:#e6eef2;--mu:#8ea1ad;--ln:#26363f;--pr:#2dd4bf;--sick:#f27a66;--cas:#8097ff;--ear:#34d3bd;--late:#f2b04a;--early:#b196ff;--bad:#ff8080}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI Variable","Segoe UI",system-ui,sans-serif}
+.hide{display:none!important}.mu{color:var(--mu);font-size:13px}
+input,select,button{font:inherit;color:var(--ink)}
+input,select{padding:9px 11px;border:1px solid var(--ln);border-radius:10px;background:var(--sf);width:100%}
+input:focus,button:focus-visible,select:focus{outline:2px solid var(--pr);outline-offset:1px}
+button{cursor:pointer;border:0;border-radius:10px;padding:9px 14px;background:var(--pr);color:#fff;font-weight:600}
+button.g{background:transparent;color:var(--ink);border:1px solid var(--ln);font-weight:500}
+label{display:block;font-size:13px;color:var(--mu);margin-bottom:10px}label input,label select{margin-top:4px;color:var(--ink)}
+#auth{max-width:420px;margin:7vh auto;padding:0 16px}
+.box{background:var(--sf);border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(10,30,40,.08)}
+.tabs{display:flex;background:var(--bg);border-radius:12px;padding:4px;margin:14px 0}.tabs button{flex:1;background:transparent;color:var(--mu)}.tabs button.on{background:var(--sf);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.er{color:var(--bad);min-height:20px;font-size:13px;margin-top:8px}
+header{background:linear-gradient(120deg,#0b4f4a,#0f766e 60%,#2a9d8f);color:#fff;padding:18px 16px 70px}
+.wrap{max-width:1280px;margin:0 auto}.top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.av{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;font-weight:700;font-size:18px}
+header h1{margin:0;font-size:20px}header .mu{color:rgba(255,255,255,.8)}header button{background:rgba(255,255,255,.16);color:#fff;border:0;font-weight:500}
+.yr{display:flex;align-items:center;gap:8px}.yr b{font-size:26px;min-width:70px;text-align:center}.yr button{width:38px;padding:6px}
+main{max-width:1280px$env:Path = "E:\Experiments\node-v24.22.0-win-x64;" + $env:Path;margin:-52px auto 40px;padding:0 16px}
+.card{background:var(--sf);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 4px 18px rgba(10,30,40,.07)}
+h2{font-size:16px;margin:0 0 12px}
+.rings{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.ring{text-align:center}.ring svg{width:112px;height:112px}.ring .n{font-size:22px;font-weight:700}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.bars{display:flex;align-items:flex-end;gap:5px;height:70px;margin-top:10px}.bars div{flex:1;text-align:center;font-size:10px;color:var(--mu)}
+.bars i{display:block;border-radius:4px 4px 0 0;min-height:3px;margin-bottom:2px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.chip{background:var(--bg);color:var(--ink);border:2px solid transparent;font-weight:500}.chip.on{color:#fff;border-color:transparent}
+.cal{max-width:340px}.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.ch button{padding:4px 10px}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}.cg span{font-size:11px;color:var(--mu)}
+.cg button{aspect-ratio:1;padding:0;background:transparent;color:var(--ink);font-weight:500;position:relative;border-radius:9px}
+.cg button:hover{background:var(--bg)}.cg button.sel{background:var(--pr);color:#fff}.cg button.fri{color:var(--mu)}
+.cg button.dot::after{content:"";position:absolute;bottom:3px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--dc)}
+.split{display:grid;grid-template-columns:auto 1fr;gap:22px}@media(max-width:700px){.split{grid-template-columns:1fr}}
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mh{margin:14px 0 4px;font-weight:600;font-size:13px;color:var(--mu)}
+.er2{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--ln)}
+.bd{border-radius:20px;padding:2px 10px;font-size:12px;color:#fff;font-weight:600}.er2 .f{flex:1}.er2 button{padding:3px 9px}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:7px 6px;text-align:left;border-bottom:1px solid var(--ln)}th{color:var(--mu);font-weight:500;font-size:12px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:12px;opacity:0;transition:.25s;pointer-events:none}#toast.on{opacity:1}
+.warn{background:rgba(217,138,11,.14);border-radius:12px;padding:12px 14px;margin-bottom:14px}
+</style></head><body>
+<div id="auth" class="hide"><div class="box">
+  <h1 style="margin:0;font-size:24px">Leave Records</h1><div class="mu">Sign in with your employee ID. You only see your own records.</div>
+  <div class="tabs"><button id="tl" class="on">Log in</button><button id="tr">Create account</button></div>
+  <label>Employee ID<input id="aid" autocomplete="username"></label>
+  <label>Password<input id="apw" type="password" autocomplete="current-password"></label>
+  <div id="reg" class="hide"><label>Confirm password<input id="apw2" type="password"></label><label>Your name<input id="anm"></label><label id="codel" class="hide">Invite code<input id="acode"></label></div>
+  <button id="go" style="width:100%">Log in</button><div class="er" id="aerr"></div></div></div>
+
+<div id="app" class="hide">
+<header><div class="wrap">
+  <div class="top"><div style="display:flex;gap:12px;align-items:center"><div class="av" id="av"></div><div><h1 id="who"></h1><div class="mu" id="sub"></div></div></div>
+  <div style="display:flex;gap:8px"><button id="setb">Account</button><button id="out">Log out</button></div></div>
+  <div class="yr" style="margin-top:18px"><button id="py">&#8249;</button><b id="yl"></b><button id="ny">&#8250;</button><span class="mu" style="margin-left:6px">Each year has its own allowances and records</span></div>
+</div></header>
+<main>
+  <div id="acc" class="card hide"><h2>Account</h2><div class="rg" style="max-width:520px">
+    <label>Name<input id="enm"></label><span></span><label>Current password<input id="pc" type="password"></label><label>New password<input id="pn" type="password"></label></div>
+    <button id="asv">Save name</button> <button class="g" id="psv">Change password</button><div class="mu" id="amsg" style="margin-top:8px"></div></div>
+  <div id="yset" class="card hide"><h2 id="yst"></h2>
+    <div class="mu" style="margin-bottom:10px">Set what you get this year. Late and early limits are optional: leave them at 0 to just count.</div>
+    <div class="rg" style="grid-template-columns:repeat(auto-fit,minmax(120px,1fr))">
+      <label>Earned leave<input id="se" type="number" min="0" step="0.5"></label><label>Sick leave<input id="ss" type="number" min="0" step="0.5"></label><label>Casual leave<input id="sc" type="number" min="0" step="0.5"></label>
+      <label>Late limit / month<input id="sl" type="number" min="0"></label><label>Early limit / month<input id="sy" type="number" min="0"></label></div>
+    <button id="ysv">Save for this year</button></div>
+  <div class="card"><div class="rings" id="rings"></div></div>
+  <div class="two"><div class="card" id="lateC"></div><div class="card" id="earlyC"></div></div>
+  <div class="card"><h2>Add leave, late arrival or early leave</h2>
+    <div class="chips" id="chips"></div>
+    <div class="split"><div class="cal"><div class="ch"><button class="g" id="pm">&#8249;</button><b id="ml"></b><button class="g" id="nm">&#8250;</button></div><div class="cg" id="cg"></div></div>
+    <div><div class="mu" style="margin-bottom:8px">Click days to select as many as you need, or fill a range.</div>
+      <div class="rg"><label>From<input type="date" id="rf"></label><label>To<input type="date" id="rt"></label></div>
+      <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="sf" checked style="width:auto;margin:0"> Skip Fridays when filling a range</label>
+      <button class="g" id="rfill" style="margin-bottom:12px">Fill range</button>
+      <label id="hl" style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="half" style="width:auto;margin:0"> Half day</label>
+      <label>Note (optional)<input id="note"></label>
+      <div id="selt" class="mu" style="margin-bottom:8px">No days selected</div>
+      <button id="add">Add</button> <button class="g" id="clr">Clear</button></div></div></div>
+  <div class="card"><h2>Records for <span id="y2"></span></h2><div id="list"></div></div>
+  <div class="card"><h2>All years</h2><div style="overflow-x:auto"><table><thead><tr><th>Year</th><th>Sick</th><th>Casual</th><th>Earned</th><th>Late</th><th>Early</th></tr></thead><tbody id="ally"></tbody></table></div>
+  <button class="g" id="csv" style="margin-top:12px">Download all records as CSV</button></div>
+</main></div><div id="toast"></div>
+<script>
+const T={sick:["Sick leave","--sick"],casual:["Casual leave","--cas"],earned:["Earned leave","--ear"],late:["Late arrival","--late"],early:["Early leave","--early"]};
+const MN=["January","February","March","April","May","June","July","August","September","October","November","December"];
+const $=i=>document.getElementById(i),col=k=>getComputedStyle(document.documentElement).getPropertyValue(T[k][1]).trim();
+const now=new Date();let me,ys,entries=[],year=now.getFullYear(),cm=new Date(now.getFullYear(),now.getMonth(),1),sel=new Set(),type="casual",mode="login";
+const iso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const esc=s=>{const d=document.createElement("div");d.textContent=s==null?"":s;return d.innerHTML};
+const lt=t=>t==="late"||t==="early";
+function toast(m){const t=$("toast");t.textContent=m;t.className="on";clearTimeout(toast.h);toast.h=setTimeout(()=>t.className="",2600)}
+async function api(p,m="GET",b){const r=await fetch(p,{method:m,headers:{"Content-Type":"application/json"},body:b?JSON.stringify(b):undefined});let j={};try{j=await r.json()}catch(e){}if(!r.ok)throw new Error(j.error||"Request failed");return j}
+function setMode(m){mode=m;$("reg").classList.toggle("hide",m!=="reg");$("go").textContent=m==="reg"?"Create account":"Log in";$("tl").className=m==="login"?"on":"";$("tr").className=m==="reg"?"on":"";$("aerr").textContent=""}
+$("tl").onclick=()=>setMode("login");$("tr").onclick=()=>setMode("reg");
+$("go").onclick=async()=>{const empId=$("aid").value.trim(),password=$("apw").value,e=$("aerr");e.textContent="";
+  if(!empId||!password){e.textContent="Enter your employee ID and password.";return}
+  try{if(mode==="reg"){if(password!==$("apw2").value){e.textContent="Passwords do not match.";return}
+    me=await api("/api/register","POST",{empId,password,name:$("anm").value,code:$("acode").value})}else me=await api("/api/login","POST",{empId,password});
+    $("apw").value=$("apw2").value="";await start()}catch(x){e.textContent=x.message}};
+async function start(){$("auth").classList.add("hide");$("app").classList.remove("hide");await loadYear(true)}
+async function loadYear(first){ys=await api("/api/year/"+year);entries=await api("/api/entries");
+  if(first||!ys.saved){fillYs();$("yset").classList.toggle("hide",ys.saved)}render()}
+function fillYs(){$("yst").textContent=ys.saved?"Allowances for "+year:"Set your allowances for "+year;$("se").value=ys.earned;$("ss").value=ys.sick;$("sc").value=ys.casual;$("sl").value=ys.late;$("sy").value=ys.early}
+$("ysv").onclick=async()=>{try{await api("/api/year/"+year,"PUT",{earned:$("se").value,sick:$("ss").value,casual:$("sc").value,late:$("sl").value,early:$("sy").value});toast("Saved for "+year);$("yset").classList.add("hide");await loadYear()}catch(e){toast(e.message)}};
+$("py").onclick=()=>{year--;cm=new Date(year,0,1);loadYear()};$("ny").onclick=()=>{year++;cm=new Date(year,0,1);loadYear()};
+$("out").onclick=async()=>{try{await api("/api/logout","POST")}catch(e){}$("app").classList.add("hide");$("auth").classList.remove("hide");setMode("login")};
+$("setb").onclick=()=>{$("enm").value=me.name;$("amsg").textContent="";$("acc").classList.toggle("hide");$("yset").classList.toggle("hide",!$("acc").classList.contains("hide")&&ys.saved);if(ys.saved)$("yset").classList.toggle("hide")};
+$("asv").onclick=async()=>{try{me=await api("/api/me","PUT",{name:$("enm").value,earned:0,sick:0,casual:0,late:0,early:0});$("amsg").textContent="Name saved.";render()}catch(e){$("amsg").textContent=e.message}};
+$("psv").onclick=async()=>{try{await api("/api/password","POST",{current:$("pc").value,next:$("pn").value});$("pc").value=$("pn").value="";$("amsg").textContent="Password changed."}catch(e){$("amsg").textContent=e.message}};
+function chips(){$("chips").innerHTML=Object.keys(T).map(k=>`<button class="chip ${k===type?"on":""}" data-k="${k}" style="${k===type?"background:"+col(k):""}">${T[k][0]}</button>`).join("");
+  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{type=b.dataset.k;$("hl").classList.toggle("hide",lt(type));chips()})}
+function cal(){const y=cm.getFullYear(),m=cm.getMonth();$("ml").textContent=MN[m]+" "+y;
+  const first=(new Date(y,m,1).getDay()+6)%7,dim=new Date(y,m+1,0).getDate();
+  let h=["Mo","Tu","We","Th","Fr","Sa","Su"].map(d=>`<span>${d}</span>`).join("")+"<span></span>".repeat(first);
+  for(let d=1;d<=dim;d++){const s=iso(new Date(y,m,d)),ex=entries.find(e=>e.date===s),fr=new Date(y,m,d).getDay()===5;
+    h+=`<button data-d="${s}" class="${sel.has(s)?"sel ":""}${fr?"fri ":""}${ex?"dot":""}" ${ex?`style="--dc:${col(ex.type)}"`:""}>${d}</button>`}
+  $("cg").innerHTML=h;$("cg").querySelectorAll("button").forEach(b=>b.onclick=()=>{sel.has(b.dataset.d)?sel.delete(b.dataset.d):sel.add(b.dataset.d);cal();selText()})}
+function selText(){const n=sel.size,d=n*($("half").checked&&!lt(type)?.5:1);$("selt").textContent=n?`${n} date${n>1?"s":""} selected${lt(type)?"":" ("+d+" day"+(d===1?"":"s")+")"}`:"No days selected"}
+$("half").onchange=selText;$("pm").onclick=()=>{cm=new Date(cm.getFullYear(),cm.getMonth()-1,1);cal()};$("nm").onclick=()=>{cm=new Date(cm.getFullYear(),cm.getMonth()+1,1);cal()};
+$("clr").onclick=()=>{sel.clear();cal();selText()};
+$("rfill").onclick=()=>{const a=$("rf").value,b=$("rt").value;if(!a||!b||a>b){toast("Choose a valid From and To date.");return}
+  for(let d=new Date(a+"T00:00");iso(d)<=b;d.setDate(d.getDate()+1)){if($("sf").checked&&d.getDay()===5)continue;sel.add(iso(d))}
+  cm=new Date(a+"T00:00");cm.setDate(1);cal();selText()};
+$("add").onclick=async()=>{if(!sel.size){toast("Select at least one day.");return}
+  try{const r=await api("/api/entries/bulk","POST",{type,dates:[...sel],days:$("half").checked?0.5:1,note:$("note").value.trim()});
+    toast(r.added+" entr"+(r.added>1?"ies":"y")+" added");sel.clear();$("note").value="";$("half").checked=false;await loadYear()}catch(e){toast(e.message)}};
+function ring(label,used,max,k){const r=46,c=2*Math.PI*r,p=max>0?Math.min(1,used/max):0,over=used>max&&max>0;
+  return `<div class="ring"><svg viewBox="0 0 112 112"><circle cx="56" cy="56" r="${r}" fill="none" stroke="var(--ln)" stroke-width="10"/><circle cx="56" cy="56" r="${r}" fill="none" stroke="${over?"var(--bad)":col(k)}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${c*p} ${c}" transform="rotate(-90 56 56)"/><text x="56" y="62" text-anchor="middle" font-size="22" font-weight="700" fill="var(--ink)">${max-used}</text></svg><div><b>${label}</b></div><div class="mu">${used} used of ${max}</div></div>`}
+function cnt(k,mo){return entries.filter(e=>e.type===k&&e.date.startsWith(year+"-"+String(mo+1).padStart(2,"0"))).length}
+function lcard(k,lim){const c=[...Array(12)].map((_,i)=>cnt(k,i)),tot=c.reduce((a,b)=>a+b,0),mx=Math.max(3,...c),cur=year===now.getFullYear()?c[now.getMonth()]:null;
+  const bad=lim>0&&cur!=null&&cur>=lim;
+  return `<h2 style="color:${col(k)}">${T[k][0]}s in ${year}</h2><div style="font-size:28px;font-weight:700">${tot} <span class="mu" style="font-weight:400">this year</span></div>
+  ${cur!=null?`<div class="${bad?"":"mu"}" style="${bad?"color:var(--bad);font-weight:600":""}">${cur} this month${lim>0?" of "+lim+" allowed":""}${bad?". Limit reached.":""}</div>`:""}
+  <div class="bars">${c.map((v,i)=>`<div title="${MN[i]}: ${v}"><i style="height:${v/mx*52}px;background:${lim>0&&v>lim?"var(--bad)":col(k)}"></i>${MN[i][0]}</div>`).join("")}</div>`}
+function render(){$("av").textContent=me.name.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join("").toUpperCase();$("who").textContent=me.name;$("sub").textContent="Employee ID "+me.empId;
+  $("yl").textContent=year;$("y2").textContent=year;
+  const ye=entries.filter(e=>e.date.startsWith(year+"-")),used=k=>ye.filter(e=>e.type===k).reduce((a,e)=>a+e.days,0);
+  $("rings").innerHTML=ring("Sick leave",used("sick"),ys.sick,"sick")+ring("Casual leave",used("casual"),ys.casual,"casual")+ring("Earned leave",used("earned"),ys.earned,"earned");
+  $("lateC").innerHTML=lcard("late",ys.late);$("earlyC").innerHTML=lcard("early",ys.early);
+  const by={};[...ye].sort((a,b)=>b.date.localeCompare(a.date)).forEach(e=>(by[e.date.slice(5,7)]=by[e.date.slice(5,7)]||[]).push(e));
+  $("list").innerHTML=Object.keys(by).length?Object.keys(by).sort().reverse().map(m=>`<div class="mh">${MN[+m-1]}</div>`+by[m].map(e=>`<div class="er2"><span class="bd" style="background:${col(e.type)}">${T[e.type][0]}</span><span class="f"><b>${e.date.slice(8)} ${MN[+m-1].slice(0,3)}</b>${lt(e.type)?"":" &middot; "+e.days+" day"+(e.days===1?"":"s")}${e.note?' <span class="mu">'+esc(e.note)+"</span>":""}</span><button class="g" data-id="${e.id}">Delete</button></div>`).join("")).join(""):'<div class="mu">Nothing recorded for '+year+' yet. Pick days above and press Add.</div>';
+  $("list").querySelectorAll("button").forEach(b=>b.onclick=async()=>{if(confirm("Delete this entry?")){await api("/api/entries/"+b.dataset.id,"DELETE");toast("Deleted");await loadYear()}});
+  const ys2=[...new Set([...entries.map(e=>+e.date.slice(0,4)),year])].sort((a,b)=>b-a);
+  $("ally").innerHTML=ys2.map(y=>{const f=k=>entries.filter(e=>e.type===k&&e.date.startsWith(y+"-")).reduce((a,e)=>a+e.days,0);return `<tr><td><b>${y}</b></td><td>${f("sick")}</td><td>${f("casual")}</td><td>${f("earned")}</td><td>${f("late")}</td><td>${f("early")}</td></tr>`}).join("");
+  chips();cal();selText()}
+$("csv").onclick=()=>{const q=s=>'"'+String(s==null?"":s).replace(/"/g,'""')+'"';const rows=[["Date","Type","Days","Note"],...[...entries].reverse().map(e=>[e.date,T[e.type][0],lt(e.type)?"":e.days,e.note])];
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([rows.map(r=>r.map(q).join(",")).join("\n")],{type:"text/csv"}));a.download="leave-records-"+me.empId+".csv";a.click()};
+(async()=>{try{const i=await api("/api/info");$("codel").classList.toggle("hide",!i.codeRequired)}catch(e){}
+  try{me=await api("/api/me");await start()}catch(e){$("auth").classList.remove("hide")}})();
+</script></body></html>

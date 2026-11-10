@@ -1,0 +1,12 @@
+{
+  "name": "leave-records",
+  "version": "1.0.0",
+  "description": "Private leave tracker with employee logins, stored in SQLite",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  }
+}
